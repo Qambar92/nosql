@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:nosql/pages/royxatdanot.dart';
 class homepage extends StatefulWidget {
   const homepage({Key? key}) : super(key: key);
@@ -10,6 +11,24 @@ class homepage extends StatefulWidget {
 }
 
 class _homepageState extends State<homepage> {
+
+  final usernameController = TextEditingController();
+  final posswordController = TextEditingController();
+
+  void _dologin() async{
+    String username = usernameController.text.toString().trim();
+    String possword = posswordController.text.toString().trim();
+     var box = Hive.box("pdp_online");
+     box.put("username", username);
+     box.put("possword", possword);
+
+     String id = box.get("username");
+     String pw = box.get("possword");
+     print(id);
+     print(pw);
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,6 +57,7 @@ class _homepageState extends State<homepage> {
               Text("Sign in to continue", style: TextStyle(color: Colors.white,fontSize: 18,fontWeight: FontWeight.bold),),
               SizedBox(height: 35,),
               TextField(
+                controller: usernameController,
 
                 decoration: InputDecoration(
                   enabledBorder: UnderlineInputBorder(
@@ -53,6 +73,7 @@ class _homepageState extends State<homepage> {
               ),
               SizedBox(height: 35,),
               TextField(
+                controller: posswordController,
 
                 decoration: InputDecoration(
                   enabledBorder: UnderlineInputBorder(
@@ -74,7 +95,7 @@ class _homepageState extends State<homepage> {
                   minWidth: 80,
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
                   color: Colors.blueAccent,
-                  onPressed: (){},
+                  onPressed:  _dologin,
                   child:Icon(Icons.arrow_forward_sharp,color: Colors.white,size: 50,) ),
               SizedBox(height: 50,),
               Row(

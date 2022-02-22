@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:nosql/pages/homepage.dart';
 import 'package:nosql/pages/royxatdanot.dart';
 
-void main() {
+Future<void> main() async {
+  await Hive.initFlutter();
+  await Hive.openBox("pdp_online");
   runApp(const MyApp());
 }
 
