@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:nosql/kirish.dart';
 import 'package:nosql/pages/homepage.dart';
 import 'package:nosql/pages/royxatdanot.dart';
 
@@ -22,8 +23,9 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.blue,
       ),
-      home: royxat(),
+      home: kirish(),
       routes:{
+        kirish.id:(context)=>kirish(),
         homepage.id:(context)=> homepage(),
         royxat.id:(context)=>royxat(),
 

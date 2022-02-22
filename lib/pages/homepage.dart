@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:nosql/kirish.dart';
 import 'package:nosql/pages/royxatdanot.dart';
 class homepage extends StatefulWidget {
   const homepage({Key? key}) : super(key: key);
@@ -34,6 +35,7 @@ class _homepageState extends State<homepage> {
     return Scaffold(
       backgroundColor: Colors.purple[900],
       body:Center(
+
         child: Container(
           margin: EdgeInsets.all(20),
           child:  Column(
@@ -41,6 +43,21 @@ class _homepageState extends State<homepage> {
 
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Row(
+
+                children: [
+
+                  Container(
+                      child: GestureDetector(
+                        onTap: (){
+                          Navigator.pushNamed(context,kirish.id);
+                        },
+                        child: Icon(Icons.arrow_back_sharp,size: 30,color: Colors.white,)
+                      )
+                  ),
+                ],
+              ),
+
               ClipRRect(
                   borderRadius: BorderRadius.circular(20),
                   child:Image.asset("asset/image/9.jpg",
